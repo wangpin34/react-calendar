@@ -1,7 +1,7 @@
 # react-calender
 A calendar build on reactjs
 
-![img](//rawgit.com/wangpin34/react-calendar/master/screenshots/v0.0.0.PNG)
+![img](http://rawgit.com/wangpin34/react-calendar/master/screenshots/v0.0.0.PNG)
 
 ## Local Development
 * Clone code, then install depending modules
