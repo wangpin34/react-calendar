@@ -7,17 +7,18 @@ class Day extends Component {
 	}
 
 	render() {
-    let { additionClasses, date } = this.props
+    let { additionClasses, date, onDayChoose } = this.props
     let className = additionClasses + ' day'
 		return (
-				<span className={ className }>{ date.getDate() }</span>
+				<span className={ className } onClick={ () => { onDayChoose(date) } }>{ date.getDate() }</span>
 			)
 	}
 }
 
 Day.propTypes = {
   additionClasses: PropTypes.string,
-  date: PropTypes.instanceOf(Date).isRequired
+  date: PropTypes.instanceOf(Date).isRequired,
+  onDayChoose: PropTypes.func.isRequired
 }
 
 Day.defaultProps = {

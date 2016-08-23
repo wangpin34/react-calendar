@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import style from '../style/index.scss'
 import Month from './Month.jsx'
 
@@ -15,10 +15,18 @@ class Calendar extends Component {
 	render() {
 		return (
 			<div className="calendar">
-				<Month />
+				<Month onDayChoose={ this.props.onDayChoose }/>
 			</div>
 		)
 	}
+}
+
+Calendar.propTypes = {
+  onDayChoose: PropTypes.func
+}
+
+Calendar.defaultProps = {
+  onDayChoose: () => null
 }
 
 

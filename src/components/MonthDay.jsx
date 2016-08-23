@@ -13,13 +13,14 @@ class MonthDay extends Component {
     if(month === (date.getMonth() + 1)) {
       isInMonth = true
     }
-		return <Day additionClasses={ isInMonth ? 'in-month' : '' } date={ date } />
+		return <Day additionClasses={ isInMonth ? 'in-month' : '' } {...this.props}/>
 	}
 }
 
 MonthDay.propTypes = {
   month: PropTypes.number.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired
+  date: PropTypes.instanceOf(Date).isRequired,
+  onDayChoose: PropTypes.func.isRequired
 }
 
 

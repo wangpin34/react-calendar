@@ -37,15 +37,15 @@ class Month extends Component {
   }
 
 	render() {
-
-    let month = this.props.date.getMonth() + 1
+    let { date, onDayChoose } = this.props
+    let month = date.getMonth() + 1
 
 		return (
 			<div className="month">
 				<Title date={this.props.date}/>
         <Week />
         { this.state.days.map(day => {
-          return <MonthDay key={ Math.random() } month={ month } date={ day }/>
+          return <MonthDay key={ Math.random() } month={ month } date={ day } onDayChoose={ onDayChoose }/>
         })}
 			</div>
 		)
@@ -53,7 +53,8 @@ class Month extends Component {
 }
 
 Month.propTypes = {
-	date: PropTypes.object
+	date: PropTypes.object,
+  onDayChoose: PropTypes.func.isRequired
 }
 
 Month.defaultProps = {
