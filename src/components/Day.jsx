@@ -1,14 +1,28 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class Day extends Component {
+class Day extends Component {
 
 	constructor(props){
 		super(props)
 	}
 
 	render() {
+    let { additionClasses, date } = this.props
+    let className = additionClasses + ' day'
 		return (
-				<span className="day">{this.props.day}</span>	
+				<span className={ className }>{ date.getDate() }</span>
 			)
 	}
 }
+
+Day.propTypes = {
+  additionClasses: PropTypes.string,
+  date: PropTypes.instanceOf(Date).isRequired
+}
+
+Day.defaultProps = {
+  additionClasses: ''
+}
+
+
+export default Day

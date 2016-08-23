@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import days from '../utils/days'
+import dayUtil from '../utils/dayUtil'
 import Week from './Week.jsx'
 import Title from './Title.jsx'
-import Day from './Day.jsx'
+import MonthDay from './MonthDay.jsx'
 
 class Month extends Component {
 	constructor(props) {
@@ -16,19 +16,37 @@ class Month extends Component {
     let month = date.getMonth() + 1
     let dayInWeek = date.getDay()
     let dayInMonth = date.getDate()
-    let firstDayInWeek = days.getFirstDayOfMonth(year, month).getDay()
-    let lastDayInWeek = days.getLastDayOfMonth(year, month).getDay()
+    let firstDay = dayUtil.getFirstDayOfMonth(year, month)
+    let lastDay = dayUtil.getLastDayOfMonth(year, month)
+    let firstDayInWeek = firstDay.getDay()
+    let lastDayInWeek = lastDay.getDay()
+    //Compoute days before and after this month in calendar
     let previousDaysNum = firstDayInWeek > 6 ? 0 : firstDayInWeek
     let afterDaysNum = lastDayInWeek > 6 ? 6 : 6 - lastDayInWeek
-    //Compute how many days should should onto month view
-    let days = []
-
+    //
+    let totalDays = dayUtil.getDaysByMonth(month) + previousDaysNum + afterDaysNum
+    let firstDayInCalendar = dayUtil.getPreDate(firstDay, previousDaysNum)
+    //Compute days in month view
+    let current = firstDayInCalendar
+    let days = [current]
+    while(--totalDays > 0) {
+      let last = days[days.length - 1]
+      days.push(dayUtil.getNextDay(last))
+    }
+    this.setState({days})
   }
 
 	render() {
+
+    let month = this.props.date.getMonth() + 1
+
 		return (
 			<div className="month">
 				<Title date={this.props.date}/>
+        <Week />
+        { this.state.days.map(day => {
+          return <MonthDay key={ Math.random() } month={ month } date={ day }/>
+        })}
 			</div>
 		)
 	}

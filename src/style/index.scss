@@ -1,0 +1,52 @@
+div.calendar {
+	background-color: grey;
+  width: 349px;
+  color: #ffffff;
+	.month {
+    width: 352px;
+    padding-top: 20px;
+
+    .title {
+      margin: 0;
+      text-align: center
+		}
+
+		.week {
+      width: 350px;
+      height: 48px;
+      border: 1px sold red;
+      list-style: none;
+      list-style-position: inside;
+      padding-left: 0;
+      margin: 0;
+
+      li {
+        width: 50px;
+        height: 50px;
+        float: left;
+        text-align: center;
+        line-height: 50px;
+      }
+		}
+
+    .day {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #ffffff;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      overflow: hidden;
+      color: #acacd2;
+
+      &.in-month {
+        color: #ffffff;
+      }
+    }
+	}
+
+}

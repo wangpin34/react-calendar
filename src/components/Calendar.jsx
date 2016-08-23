@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import style from '../style/index.scss'
 import Month from './Month.jsx'
 
 class Calendar extends Component {

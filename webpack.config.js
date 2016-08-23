@@ -5,13 +5,11 @@ var path = require('path');
 module.exports = {
     devtool: 'sourcemap',
     entry: {
-        dev: "webpack-dev-server/client?http://localhost:8080",
-        bundle: ['babel-polyfill', './example/index.jsx'],
-        vendor: ['react','react-dom'],
-        style: ['./src/style/index.sass']
+        bundle: './example/index.jsx',
+        vendor: ['react','react-dom']
     },
     output: {
-        path: path.join(__dirname , './build'),
+        path: path.join(__dirname , './dist'),
         publicPath: '/',
         filename: '[name].js'
     },
@@ -20,14 +18,14 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/},
-            { task: /\.sass$/, loader: 'css!sass'}
+            { test: /\.jsx?$/, loaders: ['react-hot','babel'], exclude: /node_modules/ },
+            { test: /\.scss$/, loaders: ['style','css','sass'] }
         ]
     },
     plugins: [
                 new webpack.optimize.CommonsChunkPlugin({
                     name: 'vendor',
-                    path: path.join(__dirname , './build'),
+                    path: path.join(__dirname , './dist'),
                     publicPath: '/',
                     filename: 'vendor.js',
                     minChunks: Infinity

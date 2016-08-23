@@ -7,9 +7,16 @@ export default class Week extends Component {
 	}
 
 	render() {
-		let { from, to } = this.props
 		return (
-				<p className="week">{from} - {to}</p>	
-			)
+      <ul className="week">
+        <li>Sun</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thr</li>
+        <li>Fri</li>
+        <li>Sa</li>
+      </ul>
+    )
 	}
 }
